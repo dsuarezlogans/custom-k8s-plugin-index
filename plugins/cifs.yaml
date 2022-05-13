@@ -1,0 +1,22 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: cifs
+spec:
+  homepage: https://github.com/dsuarezlogans/kubectl-cifs
+  shortDescription: Driver for CIFS (OpenDrive, Windows Share) network filesystems as Kubernetes volumes.
+  version: "v1.3.0"
+  description: |
+    This command allows yo to provide network storage using the CIFS protocol, which is not natively supported in Kubernetes.
+  platforms:
+    - uri: https://github.com/dsuarezlogans/kubectl-cifs/archive/refs/tags/v1.0.0.tar.gz
+      sha256: 256e78189082812590199bfd5100ad71d3f7e75afc13988da02bf58c49cac8e1
+      bin: ./kubectl-cifs
+      files:
+        - from: ./kubectl-cifs
+          to: .
+      selector:
+        matchExpressions:
+          - key: os
+            operator: In
+            values: ["darwin", "linux"]
